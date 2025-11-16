@@ -28,6 +28,8 @@ I hope this game **inspires you** and brings a little joy while exploring my cod
 
 ---
 
-## 📷 Screenshots
-[frog](assets/images/frog2.png)
+## 📷 Images
+[frog1](assets/images/frog2.png)
+[frog2](assets/images/frog4.png)
+[frog3](assets/images/frog7.png)
  
