@@ -44,7 +44,7 @@ export default function HomeScreen() {
 
     //frogs spawn interval
     useEffect(() => {
-        if (score > 9) { setGameOver(true); }
+        if (score >= 10) { setGameOver(true); }
     }, [score]);
 
     useEffect(() => {
