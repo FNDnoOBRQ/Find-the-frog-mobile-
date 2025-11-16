@@ -1,50 +1,33 @@
-# Welcome to your Expo app 👋
+# 🐸 Find the Frog Mobile
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## 📱 Devices
+Android
 
-## Get started
+## 🎮 Description
+**Find the Frog Mobile** is a **fun, engaging, and easy-to-play game** designed to help you pass the time while improving your **motor skills, observation, and finger reflexes**.  
 
-1. Install dependencies
+Explore a **beautiful swamp-forest biome** filled with **adorable frogs** that will warm your heart and lift your spirits! 🌿💚
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## 📝 Rules
 
-   ```bash
-   npx expo start
-   ```
+- On the **Start Screen**, you can choose a difficulty level and start playing.  
+  *(Currently, difficulty selection is disabled in this version.)*  
+- Your main task is to **find the required number of frogs in the area**. 🐸  
+- Future updates will include a **timer**, so you can challenge yourself to complete levels faster and earn higher scores. ⏱️  
+- After winning, you can:  
+  - **Return to the Start Screen**  
+  - **Restart the level** to earn a higher score *(some features temporarily disabled)*  
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 💡 Note
+Thank you for visiting my repository! 🙏  
+I hope this game **inspires you** and brings a little joy while exploring my code.  
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 📷 Screenshots
+[frog](assets/images/frog2.png)
+ 
