@@ -33,6 +33,7 @@ export default function HomeScreen() {
     const pauseRef = useRef(false);
     const pauseGame = () => (pauseRef.current = true);
     const resume = () => (pauseRef.current = false);
+    const requireCountOfPoints = 10;
 
 
     function clickedFrog(id: number) {
