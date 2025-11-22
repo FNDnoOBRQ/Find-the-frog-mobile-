@@ -13,7 +13,7 @@ Explore a **beautiful swamp-forest biome** filled with **adorable frogs** that w
 ## 📝 Rules
 
 - On the **Start Screen**, you can choose a difficulty level and start playing.  
-  *(Currently, difficulty selection is disabled in this version.)*  
+ -Choose the difficulty(**easy**/**medium**/**hard**) and play herder or easier version of this game. 
 - Your main task is to **find the required number of frogs in the area**. 🐸  
 - Future updates will include a **timer**, so you can challenge yourself to complete levels faster and earn higher scores. ⏱️  
 - After winning, you can:  
