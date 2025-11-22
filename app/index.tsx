@@ -8,7 +8,7 @@ import { Audio } from 'expo-av';
 
 //sound of the clickedFog
 const playFrogSound = async () => {
-    const { sound } = await Audio.Sound.createAsync(
+    let { sound } = await Audio.Sound.createAsync(
         require('@/assets/soundOfClickedForg.mp3')
     );
     await sound.playAsync();
@@ -26,14 +26,16 @@ export default function HomeScreen() {
     ];
     const [frogs, setFrogs] = useState<Frog[]>([]);
     const [score, setScore] = useState<Int32>(0);
+    const [requireFrogs, setRequireFrogs] = useState(1);
     const [startScreen, showStartScreen] = useState<boolean>(true);
     const [gameOver, setGameOver] = useState<boolean>(false);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [difficulty, setDifficulty] = useState(1);
+    const [difficultyStyles, setDifficultyStyles] = useState(["#3FFF00", "#4B0082", "Easy", "DejaVu Sans Mono, monospace"]);
 
     const pauseRef = useRef(false);
     const pauseGame = () => (pauseRef.current = true);
     const resume = () => (pauseRef.current = false);
-    const requireCountOfPoints = 10;
 
 
     function clickedFrog(id: number) {
@@ -45,8 +47,10 @@ export default function HomeScreen() {
 
     //frogs spawn interval
     useEffect(() => {
-        if (score >= 10) { setGameOver(true); }
+        if (score >= requireFrogs*3 + 7) { setGameOver(true); }
     }, [score]);
+
+
 
     useEffect(() => {
         if (!isPlaying) return;
@@ -82,6 +86,8 @@ export default function HomeScreen() {
         return () => clearInterval(interval);
     }, [isPlaying]);
 
+
+
     const toStartScreen = () => {
         setScore(0);
         setFrogs([]);
@@ -90,6 +96,37 @@ export default function HomeScreen() {
         showStartScreen(true);
         pauseGame();
     };
+
+
+    //difficulty settings
+    function changeDifficulty() {
+        switch (difficulty) {
+            case 1:
+                setRequireFrogs(1);
+                setDifficultyStyles(["#3FFF00", "#4B0082", "Easy", "DejaVu Sans Mono, monospace"]);
+                break;
+            case 2:
+                setRequireFrogs(2);
+                setDifficultyStyles(["#FFD800", "#0000B8", "Medium", "URW Chancery L, cursive"]);
+                break;
+            case 3:
+                setRequireFrogs(3);
+                setDifficultyStyles(["#ED1B24", "#FFFAFA", "Hard", "Trattatello, fantasy"]);
+                break;
+        }
+
+        if (difficulty < 3) {
+            setDifficulty(difficulty + 1);
+        }
+        else {
+            setDifficulty(1);
+        }
+
+
+    }
+
+
+
 
     //main return function
     return (
@@ -124,7 +161,7 @@ export default function HomeScreen() {
                 <Text style={styles.text}>Well done!</Text>
                 <Text style={styles.text}>You've caught {points} frogs</Text>
                 <Text style={{ flex: 2 }}></Text>
-                <Pressable onPress={()=>{alert("Sorry, This function is in progress. Please wait for a moderner version")}} style={[styles.button, {backgroundColor: 'grey'}]}><Text style={{ textAlign: 'center', lineHeight: 30, fontSize: 20 }}>Restart</Text></Pressable>
+                <Pressable onPress={() => { alert("Sorry, This function is in progress. Please wait for a moderner version") }} style={[styles.button, { backgroundColor: 'grey' }]}><Text style={{ textAlign: 'center', lineHeight: 30, fontSize: 20 }}>Restart</Text></Pressable>
                 <Text style={{ flex: 1 }}></Text>
                 <Pressable onPress={toStartScreen} style={styles.button}><Text style={{ textAlign: 'center', lineHeight: 30, fontSize: 20 }}>Exit level</Text></Pressable>
                 <Text style={{ flex: 1 }}></Text>
@@ -142,7 +179,7 @@ export default function HomeScreen() {
                 <Text style={[styles.sText, styles.mainText]}>Find the frog!</Text>
                 <Text style={styles.sText}>Select the difficulty and play:</Text>
                 <Text style={{ flex: 1 }}></Text><Pressable onPress={() => { onStart(); resume(); }} style={styles.sButton} ><Text style={{ textAlign: 'center', lineHeight: 40, fontSize: 20 }}>Play</Text></Pressable>
-                <Text style={{ flex: 1 }}></Text>< Pressable onPress={() => { alert("Sorry, This function is in progress. Please wait for a moderner version") }} style={[styles.sButton, styles.chooseDifficulty]}><Text style={{ textAlign: 'center', lineHeight: 40, fontSize: 20 }}>Easy</Text></Pressable>
+                <Text style={{ flex: 1 }}></Text>< Pressable onPress={changeDifficulty} style={[styles.sButton, { backgroundColor: difficultyStyles[0] }]}><Text style={{ textAlign: 'center', lineHeight: 40, fontSize: 20, color: difficultyStyles[1], fontFamily: difficultyStyles[3]}}>{difficultyStyles[2]}</Text></Pressable>
                 <Text style={{ flex: 1 }}></Text>< Pressable onPress={() => BackHandler.exitApp()} style={styles.sButton}><Text style={{ textAlign: 'center', lineHeight: 40, fontSize: 20 }}>Exit game</Text></Pressable>
                 <Text style={{ flex: 1 }}></Text>
             </View>
@@ -156,6 +193,7 @@ export default function HomeScreen() {
 
 
 export const styles = StyleSheet.create({
+
     backGorundImage: {
         position: 'absolute',
         top: 0,
@@ -166,11 +204,10 @@ export const styles = StyleSheet.create({
     },
     frogImage: {
         position: 'absolute',
-        zIndex: 5,
         top: "60%",
         flex: 5,
         height: 'auto',
-        width: 120,
+        width: 200,
     },
     score: {
         marginBottom: 1,
@@ -290,9 +327,5 @@ export const styles = StyleSheet.create({
         width: "100%",
         height: "15%",
         padding: 5,
-    },
-    chooseDifficulty: {
-        backgroundColor: "grey",
-        color: "grey"
     }
 });

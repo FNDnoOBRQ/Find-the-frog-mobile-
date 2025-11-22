@@ -3,7 +3,6 @@ import { Frog } from '@/components/frogs';
 const { width, height } = Dimensions.get('window');
 import {Audio} from 'expo-av'; 
 
-
 const playFrogSound = async () => {
   const { sound } = await Audio.Sound.createAsync(
     require('@/assets/frog-croak.mp3')
