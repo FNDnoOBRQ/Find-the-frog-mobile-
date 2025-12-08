@@ -15,8 +15,10 @@ Explore a **beautiful swamp-forest biome** filled with **adorable frogs** that w
 - On the **Start Screen**, you can choose a difficulty level and start playing.  
  -Choose the difficulty(**easy**/**medium**/**hard**) and play herder or easier version of this game. 
 - Your main task is to **find the required number of frogs in the area**. 🐸  
-- Future updates will include a **timer**, so you can challenge yourself to complete levels faster and earn higher scores. ⏱️  
-- After winning, you can:  
+- Every frog is necessary for the win. you need to be concentrated in the game unless you want to lose or just trying to surrender.
+- One frog - one point. if you dont hurry up and click the frog before it disappears the program will count it as own point.
+- If the program claim a few points, it will win immediately.
+- After winning or lossing, you can:  
   - **Return to the Start Screen**  
   - **Restart the level** to earn a higher score *(some features temporarily disabled)*  
 
