@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
         backgroundColor: '#98d40c93',
         zIndex: 10,
     },
-        score1: {
+    enemyScore: {
         marginBottom: 1,
         position: 'absolute',
         bottom: 0,
@@ -52,6 +52,7 @@ export const styles = StyleSheet.create({
         zIndex: 10,
     },
 
+
     //Win screen styles
     mainWinWindow: {
         position: 'absolute',
@@ -62,13 +63,11 @@ export const styles = StyleSheet.create({
         left: 300,
         top: 75,
 
-        backgroundColor: "#ebeae8ff",
-        color: "ghostwhite",
-
-        borderColor: "#80FF00",
-        borderWidth: 3,
+        backgroundColor: "#08e275ea",
+        borderColor: "#191970",
+        borderWidth: 5,
         borderStyle: "solid",
-        borderRadius: 20,
+        borderRadius: 25,
 
         zIndex: 3,
         padding: 10,
@@ -76,21 +75,88 @@ export const styles = StyleSheet.create({
 
     text: {
         flex: 3,
-        color: "#003262",
+        color: "#FFA500",
         width: "100%",
         height: 10,
-        fontFamily: 'Bradley Hand, cursive',
+        fontFamily: 'OCR A Std, monospace',
         fontSize: 18,
         textAlign: 'center',
         lineHeight: 20,
+    },
+    buttonText: {
+        flex: 3,
+        color: "#0000CD",
+        width: "100%",
+        height: 10,
+        fontFamily: 'OCR A Std, monospace',
+        fontSize: 20,
+        textAlign: 'center',
+        lineHeight: 19,
     },
 
     button: {
         flex: 2,
         zIndex: 4,
-        backgroundColor: '#FF7900',
-        color: '#242423',
-        borderColor: 'black',
+        backgroundColor: '#FF8C00',
+        borderColor: '#0711a3ff',
+        borderStyle: 'solid',
+        borderWidth: 2,
+        borderRadius: 10,
+        width: "100%",
+        height: "15%",
+        padding: 5,
+    },
+
+
+    // Lose screen settings
+
+    loseMainWinWindow: {
+        position: 'absolute',
+        flexDirection: 'column',
+
+        width: 225,
+        height: 300,
+        left: 300,
+        top: 75,
+
+        backgroundColor: "#08e275ea",
+        borderColor: "#191970",
+        borderWidth: 5,
+        borderStyle: "solid",
+        borderRadius: 25,
+
+        zIndex: 3,
+        padding: 10,
+    },
+
+    loseText: {
+        flex: 3,
+        color: "#CE2029",
+        width: "100%",
+        height: 10,
+        fontFamily: 'DejaVu Sans Mono, monospace',
+        fontSize: 19,
+        textAlign: 'center',
+        lineHeight: 20,
+    },
+
+    loseButtonText: {
+        flex: 3,
+        color: "#FFA000",
+        width: "100%",
+        height: 10,
+        fontFamily: 'DejaVu Sans Mono, monospace',
+        fontSize: 19,
+        textAlign: 'center',
+        lineHeight: 20,
+    },
+
+
+    loseButton: {
+        flex: 2,
+        zIndex: 4,
+        backgroundColor: '#00B9E8',
+        borderColor: '#E25822',
         borderStyle: 'solid',
         borderWidth: 2,
         borderRadius: 10,

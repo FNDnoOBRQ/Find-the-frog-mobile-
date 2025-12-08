@@ -36,7 +36,7 @@ export default function HomeScreen() {
     ];
     const [frogs, setFrogs] = useState<Frog[]>([]);
     const [score, setScore] = useState<Int32>(0);
-    const [score1, setScore1] = useState<Int32>(0);
+    const [enemyScore, setEnemyScore] = useState<Int32>(0);
     const [requireFrogs, setRequireFrogs] = useState(1);
     const [startScreen, showStartScreen] = useState<boolean>(true);
     const [gameOver, setGameOver] = useState<boolean>(false);
@@ -50,7 +50,7 @@ export default function HomeScreen() {
 
     const toStartScreen = () => {
         setScore(0);
-        setScore1(0);
+        setEnemyScore(0);
         setFrogs([]);
         setGameOver(false);
         setIsPlaying(false);
@@ -62,8 +62,8 @@ export default function HomeScreen() {
     //frogs spawn interval
     useEffect(() => {
         if (score >= requireFrogs * 3 + 7) { setGameOver(true); }
-        if (score1 >= 5) { setGameOver(true); }
-    }, [score, score1, setGameOver, requireFrogs]);
+        if (enemyScore >= 5) { setGameOver(true); }
+    }, [score, enemyScore, setGameOver, requireFrogs]);
 
 
 
@@ -97,7 +97,7 @@ export default function HomeScreen() {
                 const updated = prev.map(f => ({ ...f, time: f.time - 1000 }));
                 const deadFrogs = updated.filter(f => f.time <= 0).length;
                 if (deadFrogs > 0) {
-                    setScore1(c => c + deadFrogs);
+                    setEnemyScore(c => c + deadFrogs);
                 }
                 return updated.filter(f => f.time > 0);
             });
@@ -159,23 +159,23 @@ export default function HomeScreen() {
                     <Text style={styles.text}>Well done!</Text>
                     <Text style={styles.text}>You've caught {points} frogs</Text>
                     <Text style={{ flex: 2 }}></Text>
-                    <Pressable onPress={() => { alert("Sorry, This function is in progress. Please wait for a moderner version") }} style={[styles.button, { backgroundColor: 'grey' }]}><Text style={{ textAlign: 'center', lineHeight: 30, fontSize: 20 }}>Restart</Text></Pressable>
+                    <Pressable onPress={() => { alert("Sorry, This function is in progress. Please wait for a moderner version") }} style={styles.button}><Text style={styles.buttonText}>Restart</Text></Pressable>
                     <Text style={{ flex: 1 }}></Text>
-                    <Pressable onPress={toStartScreen} style={styles.button}><Text style={{ textAlign: 'center', lineHeight: 30, fontSize: 20 }}>Exit level</Text></Pressable>
+                    <Pressable onPress={toStartScreen} style={styles.button}><Text style={styles.buttonText}>Exit level</Text></Pressable>
                     <Text style={{ flex: 1 }}></Text>
                 </View>
             )
         }
         else {
             return (
-                <View style={styles.mainWinWindow}>
+                <View style={styles.loseMainWinWindow}>
                     <Text style={{ flex: 1 }}></Text>
-                    <Text style={styles.text}>Computer wins</Text>
-                    <Text style={styles.text}>Try again next time</Text>
+                    <Text style={styles.loseText}>Computer wins</Text>
+                    <Text style={styles.loseText}>Try again next time</Text>
                     <Text style={{ flex: 2 }}></Text>
-                    <Pressable onPress={() => { alert("Sorry, This function is in progress. Please wait for a moderner version") }} style={[styles.button, { backgroundColor: 'grey' }]}><Text style={{ textAlign: 'center', lineHeight: 30, fontSize: 20 }}>Restart</Text></Pressable>
+                    <Pressable onPress={() => { alert("Sorry, This function is in progress. Please wait for a moderner version") }} style={styles.loseButton}><Text style={styles.loseButtonText}>Restart</Text></Pressable>
                     <Text style={{ flex: 1 }}></Text>
-                    <Pressable onPress={toStartScreen} style={styles.button}><Text style={{ textAlign: 'center', lineHeight: 30, fontSize: 20 }}>Exit level</Text></Pressable>
+                    <Pressable onPress={toStartScreen} style={styles.loseButton}><Text style={styles.loseButtonText}>Exit level</Text></Pressable>
                     <Text style={{ flex: 1 }}></Text>
                 </View>
             )
@@ -205,7 +205,7 @@ export default function HomeScreen() {
             <Image source={require('@/assets/images/fullbackground.png')} style={styles.backGorundImage} />
             <Image source={require('@/assets/images/fullfrontground.png')} style={styles.backGorundImage} />
             <Text style={styles.score}>x{score}</Text>
-            <Text style={styles.score1}>x{score1}</Text>
+            <Text style={styles.enemyScore}>x{enemyScore}</Text>
 
             {startScreen && <StartScreen onStart={() => { setIsPlaying(true); showStartScreen(false); }} />}
             {gameOver && <WinScreen points={score} />}
